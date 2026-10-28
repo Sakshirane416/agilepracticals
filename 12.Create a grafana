@@ -1,0 +1,120 @@
+## Experiment: Create a Grafana Dashboard
+
+### 1. Aim
+
+To create a Grafana dashboard with one panel displaying CPU or memory usage from an available metrics source.
+
+### 2. Objectives
+
+1. To understand the basic concepts of Grafana.
+2. To learn how to create and configure a dashboard.
+3. To connect Grafana with Prometheus as a data source.
+4. To display CPU or memory usage using a visualization panel.
+5. To monitor system resources using metrics and graphs.
+
+### 3. Theory
+
+Grafana is an open-source monitoring and data visualization tool used to display metrics through dashboards and graphs. It helps users monitor system performance and analyze data over time.
+
+Prometheus is a monitoring and metrics collection system that stores time-series data. Grafana can connect to Prometheus to visualize the collected metrics.
+
+A dashboard contains one or more panels, and each panel displays data in a visualization format such as a graph or gauge. PromQL is the query language used to retrieve and calculate metrics from Prometheus.
+
+In this practical, a Grafana dashboard is created with one panel to display CPU or memory usage. Prometheus is selected as the data source, and an appropriate query is used to display the metrics.
+
+Important components:
+
+- Grafana: Displays metrics using dashboards.
+- Prometheus: Collects and stores metrics.
+- Data source: Connects Grafana to the metrics system.
+- Panel: Displays metrics as graphs or visualizations.
+- PromQL: Queries and calculates metrics from Prometheus.
+
+### 4. Conclusion
+
+Successfully created a Grafana dashboard with one panel displaying CPU or memory usage from Prometheus. This practical helped me understand data source configuration, PromQL queries, visualization panels, and resource monitoring using Grafana.
+
+
+
+
+## Step 1: Open Grafana
+
+1. Start Docker Desktop and ensure your Grafana and Prometheus services are running.
+2. Open your browser and visit `http://localhost:3000`.
+3. Log in to Grafana.
+
+## Step 2: Configure the Prometheus data source
+
+1. In the left sidebar, click Connections → Data sources.
+2. Select Prometheus. If it is not configured, click Add data source → Prometheus.
+3. Enter the appropriate Prometheus server URL:
+   - If both containers share a Docker network: `http://prometheus:9090`
+   - If Grafana runs in Docker and Prometheus runs directly on Windows: `http://host.docker.internal:9090`
+   - If both run directly on Windows: `http://localhost:9090`
+4. Click Save & test and confirm the connection succeeds.
+
+## Step 3: Create a new dashboard
+
+1. Click Dashboards in the left sidebar.
+2. Click New → New dashboard.
+3. Click Add visualization.
+4. Select Prometheus as the data source.
+
+## Step 4: Add a CPU usage panel
+
+1. In the query editor, switch to Code mode if necessary.
+2. Enter this PromQL query:
+
+```
+sum(rate(container_cpu_usage_seconds_total[5m])) * 100
+```
+
+3. Select Time series as the visualization.
+4. Set the panel title to `CPU Usage (%)`.
+
+This query measures CPU usage across monitored containers as a percentage of one CPU core.
+
+Alternative: Memory usage
+
+If CPU metrics are unavailable, use this query instead:
+
+```
+sum(container_memory_working_set_bytes) / 1024 / 1024
+```
+
+Set the title to `Memory Usage (MB)`. This displays the total working-set memory of the monitored containers in megabytes.
+
+## Step 5: Verify the metrics
+
+1. Wait for the graph to display data.
+2. If it shows No data, open `http://localhost:9090`.
+3. In Prometheus, check whether the metric `container_cpu_usage_seconds_total` or `container_memory_working_set_bytes` exists.
+4. If neither exists, configure an appropriate exporter or choose a metric available in your setup.
+
+## Step 6: Save the dashboard
+
+1. Click Apply to add the panel.
+2. Click Save dashboard.
+3. Enter the dashboard name:
+
+   `System Resource Monitoring`
+4. Click Save to confirm.
+
+## Step 7: Verify the final dashboard
+
+Your dashboard should contain exactly one panel showing CPU or memory usage over time.
+
+Capture screenshots of:
+
+- The panel query and graph.
+- The dashboard with its saved name.
+- The Prometheus data source connection, if required for your practical journal.
+
+## Expected result
+
+- Created a Grafana dashboard named `System Resource Monitoring`.
+- Added one Time series panel.
+- Connected the panel to Prometheus.
+- Displayed CPU or memory metrics successfully.
+
+Conclusion: Successfully created a Grafana dashboard with one panel displaying CPU or memory usage from Prometheus. This practical helped me understand data sources, PromQL queries, visualization panels, and dashboard creation in Grafana.
