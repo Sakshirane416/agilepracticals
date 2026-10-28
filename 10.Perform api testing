@@ -1,0 +1,56 @@
+# Practical: Perform API Testing Using Postman
+
+### 1. Aim
+
+To perform API testing using Postman by sending a GET request to `https://jsonplaceholder.typicode.com/posts/1`, verifying that the response status is 200, and displaying the response body.
+
+### 2. Objectives
+
+1. To understand the basics of API testing.
+2. To learn how to send HTTP requests using Postman.
+3. To verify the HTTP response status code.
+4. To display and examine the JSON response body.
+5. To understand how Postman is used to test APIs.
+
+### 3. Theory
+
+API (Application Programming Interface) allows two software applications to communicate with each other. API testing checks whether an API works correctly and returns the expected response.
+
+Postman is a tool used to send HTTP requests and test APIs. It supports methods such as GET, POST, PUT, and DELETE.
+
+In this practical, a GET request is sent to the JSONPlaceholder API to retrieve a specific post. The server returns a response containing the post details in JSON format.
+
+The HTTP status code 200 OK indicates that the request was successful.
+
+Important terms:
+
+- GET: Retrieves data from a server.
+- Response status: Indicates the result of the request.
+- 200 OK: Indicates successful execution.
+- JSON: A format used to exchange structured data.
+- Response body: Contains the data returned by the API.
+
+### 4. Procedure
+
+1. Open Postman.
+2. Create a new HTTP request.
+3. Select the GET method.
+4. Enter the URL `https://jsonplaceholder.typicode.com/posts/1`.
+5. Click Send.
+6. Verify that the response status is `200 OK`.
+7. Open the Body tab and view the JSON response.
+
+### 5. Expected Response Body
+
+```
+{
+  "userId": 1,
+  "id": 1,
+  "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+  "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+}
+```
+
+### 6. Conclusion
+
+Successfully performed API testing using Postman by sending a GET request to the JSONPlaceholder API. Verified the `200 OK` response status and displayed the response body in JSON format. This practical helped me understand HTTP requests, response status codes, and API testing using Postman.
