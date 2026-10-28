@@ -1,0 +1,113 @@
+## Experiment: Execute a Jenkins Pipeline
+
+### 1. Aim
+
+To create and execute a Jenkins pipeline that prints “Welcome to DevOps Practical” and “Build Successful” in the console output.
+
+### 2. Objectives
+
+1. To understand the basic concepts of Jenkins.
+2. To learn how to create a pipeline job in Jenkins.
+3. To write a simple pipeline script using Groovy.
+4. To execute the pipeline and view the console output.
+5. To verify the successful completion of a Jenkins build.
+
+### 3. Theory
+
+Jenkins is an open-source automation server used to automate software building, testing, and deployment. It is widely used in Continuous Integration and Continuous Delivery (CI/CD).
+
+A Jenkins Pipeline is a set of automated steps used to perform software development tasks. It is written using a pipeline script and consists of stages and steps.
+
+- Pipeline: Defines the complete automation process.
+- Stage: Divides the pipeline into different sections.
+- Step: Performs an individual task.
+- Console Output: Displays the messages and execution logs of a build.
+
+In this practical, a pipeline is created with two stages: `Welcome` and `Build`. The first stage prints “Welcome to DevOps Practical”, while the second prints “Build Successful”. The pipeline is executed, and its output is verified in the Jenkins console.
+
+### 4. Conclusion
+
+Successfully created and executed a Jenkins pipeline that printed “Welcome to DevOps Practical” and “Build Successful” in the console output. This practical helped me understand Jenkins pipeline creation, stage execution, and build status verification.
+
+
+
+## Step 1: Open Jenkins
+
+1. Open your web browser.
+2. Visit `http://localhost:8080`.
+3. Log in to Jenkins.
+4. On the dashboard, click New Item.
+
+## Step 2: Create a pipeline job
+
+1\. Enter the job name:
+
+`DevOpsPipeline`
+
+2. Select Pipeline.
+3. Click OK.
+
+## Step 3: Configure the pipeline
+
+1. Scroll down to the Pipeline section.
+2. Under Definition, select Pipeline script.
+3. In the Script box, paste this complete code:
+
+```
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Welcome') {
+            steps {
+                echo 'Welcome to DevOps Practical'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Build Successful'
+            }
+        }
+    }
+}
+
+```
+
+4\. Click Save.
+
+## Step 4: Execute the pipeline
+
+1. Open the `DevOpsPipeline` job.
+2. Click Build Now.
+3. Wait for the build to finish.
+4. Under Build History, click the latest build number, such as `#1`.
+5. Click Console Output.
+
+## Step 5: Verify the output
+
+The console should contain these messages:
+
+```
+[Pipeline] { (Welcome)
+Welcome to DevOps Practical
+[Pipeline] }
+[Pipeline] { (Build)
+Build Successful
+[Pipeline] }
+Finished: SUCCESS
+```
+
+The exact console formatting may vary.
+
+Expected result
+
+- Pipeline job: `DevOpsPipeline`
+- Welcome message printed successfully
+- Build success message printed successfully
+- Build status: SUCCESS
+
+Conclusion: Successfully created and executed a Jenkins pipeline that printed `Welcome to DevOps Practical` and `Build Successful` in the console output. This practical helped me understand Jenkins pipeline creation, execution, and build verification.
+
+Screenshot for your journal: Capture the Jenkins Console Output showing both messages and `Finished: SUCCESS`.
