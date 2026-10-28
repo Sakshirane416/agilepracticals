@@ -1,0 +1,105 @@
+## Experiment: Create a Jira Task
+
+### 1. Aim
+
+To create a Jira project named StudentProject, add a task titled Complete Project Documentation, and assign it to yourself.
+
+### 2. Objectives
+
+1. To understand the basic features of Jira.
+2. To learn how to create a new project in Jira.
+3. To create and manage tasks in a project.
+4. To assign tasks to team members.
+5. To understand how Jira helps in project and task management.
+
+### 3. Theory
+
+Jira is a project management and issue-tracking tool developed by Atlassian. It is used to plan, track, and manage tasks in software development and other projects.
+
+Jira organizes work into projects and issues. A project contains tasks, bugs, and other work items. Each task has a title, description, status, and assignee.
+
+In this practical, a project named StudentProject is created. A task titled Complete Project Documentation is added to the project and assigned to the current user. This helps in understanding task creation, assignment, and project management in Jira.
+
+Key features of Jira:
+
+- Project creation and management
+- Task creation and assignment
+- Task status tracking
+- Team collaboration
+- Progress monitoring
+
+### 4. Conclusion
+
+Successfully created a Jira project named StudentProject, added a task titled Complete Project Documentation, and assigned it to myself. This practical helped me understand the basic concepts of project creation, task management, and task assignment using Jira.
+
+
+
+##### Steps to Perform: Create a Jira Task
+
+Aim: Create a Jira project named `StudentProject`, add a task titled `Complete Project Documentation`, and assign it to yourself.
+
+## Step 1: Open Jira
+
+1. Open your web browser.
+2. Open your Jira website and log in to your account.
+3. On the Jira dashboard, find the Projects menu.
+
+## Step 2: Create a new project
+
+1. Click Projects → Create project.
+2. Select a project template. Choose Kanban or Scrum if available.
+3. Click Use template or Select template.
+4. Enter the project name:
+
+`StudentProject`
+
+5. If Jira asks for a project key, enter `SP` if it is available.
+6. Choose a project type if prompted, such as Team-managed.
+7. Click Create project.
+
+## Step 3: Create a task
+
+1. Open the newly created StudentProject.
+2. Click Create in the top navigation bar.
+3. Select `StudentProject` in the Project field.
+4. Set the issue type to Task.
+5. Enter the summary:
+
+`Complete Project Documentation`
+
+6\. Add a description if required, for example:
+
+`Prepare and complete the project documentation.`\
+7\. Find the Assignee field.
+
+## Step 4: Assign the task to yourself
+
+1. Click the Assignee field.
+2. Search for your own Jira username or display name.
+3. Select your account from the suggestions.
+4. Verify that your account appears in the Assignee field.
+5. Click Create to create the task.
+
+If you don't see an Assignee field, create the task first and then open it to edit or assign it.
+
+## Step 5: Verify the task
+
+1. Open `StudentProject`.
+2. Go to Backlog, Board, or Issues, depending on your project template.
+3. Find `Complete Project Documentation`.
+4. Open the task and verify that the assignee is your account.
+
+## Expected result
+
+The project and task should appear as follows:
+
+| Field        | Expected value                   |
+| ------------ | -------------------------------- |
+| Project name | `StudentProject`                 |
+| Issue type   | Task                             |
+| Task title   | `Complete Project Documentation` |
+| Assignee     | Your Jira account                |
+
+Result: The Jira project was created successfully, and the task was added and assigned to yourself.
+
+For your practical journal: Take screenshots of the project page, the task details, and the assignee field as evidence of successful execution.
