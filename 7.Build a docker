@@ -1,0 +1,156 @@
+## Experiment: Build a Docker Image
+
+### 1. Aim
+
+To create a Dockerfile for a simple HTML page displaying “Welcome to Docker”, build a Docker image, and run it inside a container.
+
+### 2. Objectives
+
+1. To understand the basic concepts of Docker.
+2. To learn how to create a Dockerfile.
+3. To build a Docker image from a Dockerfile.
+4. To run a Docker image inside a container.
+5. To verify the running application in a web browser.
+
+### 3. Theory
+
+Docker is an open-source platform used to develop, package, and run applications inside containers. Containers provide an isolated environment in which applications can run consistently across different systems.
+
+A Docker image is a read-only template used to create containers. A Docker container is a running instance of an image.
+
+A Dockerfile contains instructions for building a Docker image. In this practical, an HTML page displaying “Welcome to Docker” is created and served using the Nginx web server.
+
+Important Docker commands:
+
+- `docker build` – Builds a Docker image.
+- `docker run` – Creates and starts a container.
+- `docker images` – Lists available Docker images.
+- `docker ps` – Displays running containers.
+
+The image is built using the Dockerfile and then executed in a container. The application is accessed through a web browser to verify that it is working correctly.
+
+### 4. Conclusion
+
+Successfully created a Dockerfile for a simple HTML page displaying “Welcome to Docker”, built the Docker image, and ran it inside a container. The webpage was accessed successfully through a web browser. This practical helped me understand Docker images, containers, and application deployment using Docker.
+
+
+
+
+## Step 1: Create a project folder
+
+Open PowerShell and execute:
+
+```
+mkdir DockerWelcome
+cd DockerWelcome
+```
+
+## Step 2: Create the HTML file
+
+Run:
+
+```
+notepad index.html
+```
+
+Paste this HTML code into Notepad:
+
+```
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Docker</title>
+</head>
+<body>
+    <h1>Welcome to Docker</h1>
+</body>
+</html>
+
+```
+
+Save the file using Ctrl + S and close Notepad.
+
+## Step 3: Create the Dockerfile
+
+In PowerShell, execute:
+
+```
+notepad Dockerfile
+```
+
+Paste the following code:
+
+```
+
+FROM nginx:alpine
+
+COPY index.html /usr/share/nginx/html/index.html
+
+EXPOSE 80
+
+```
+
+Save the file as `Dockerfile` without any file extension. Close Notepad.
+
+## Step 4: Build the Docker image
+
+Make sure Docker Desktop is running. In PowerShell, execute:
+
+```
+docker build -t welcome-docker .
+```
+
+Here:
+
+- `docker build` builds the image.
+- `-t welcome-docker` assigns the image name.
+- `.` specifies the current folder as the build context.
+
+## Step 5: Run the Docker container
+
+Run:
+
+```
+docker run -d --name welcome-container -p 8082:80 welcome-docker
+```
+
+This starts the container in the background and maps port `8082` on your computer to port `80` inside the container.
+
+Note: If `welcome-container` already exists from your earlier practical, use a different name, such as `welcome-container-2`, and change the command accordingly.
+
+## Step 6: Verify the output
+
+1. Open your browser.
+2. Visit `http://localhost:8082`.
+3. You should see:
+
+# Welcome to Docker
+
+Your HTML page served by Nginx in Docker
+
+## Step 7: Verify the image and container
+
+Check the Docker image:
+
+```
+docker images
+```
+
+Check the running container:
+
+```
+docker ps
+```
+
+You should see the image `welcome-docker` and the container `welcome-container` in the output.
+
+## Expected result
+
+- Created an HTML page displaying “Welcome to Docker”.
+- Created a Dockerfile using the Nginx image.
+- Built the Docker image successfully.
+- Ran the image inside a Docker container.
+- Verified the webpage using `http://localhost:8082`.
+
+Conclusion: Successfully created a Dockerfile for a simple HTML page, built the Docker image, and ran it inside a container. The webpage displayed “Welcome to Docker” successfully in the browser.
