@@ -1,0 +1,160 @@
+## Experiment: Create a GitHub Repository
+
+### 1. Aim
+
+To create a GitHub repository named DevOpsPractical, add a README file, create a branch named `feature`, and push the branch to GitHub.
+
+### 2. Objectives
+
+1. To understand the basic concepts of GitHub.
+2. To learn how to create and manage a repository.
+3. To add a README file to a repository.
+4. To create and manage Git branches.
+5. To learn how to push a local branch to a remote GitHub repository.
+
+### 3. Theory
+
+GitHub is an online platform used to store, manage, and share source code. It uses Git, a version control system, to track changes in files and help developers collaborate on projects.
+
+A repository stores project files and their version history. A README file provides information about the project, while a branch allows developers to work on changes separately without directly modifying the main branch.
+
+The `git push` command uploads local commits and branches to a remote repository on GitHub.
+
+Important Git commands:
+
+- `git clone` – Downloads a repository from GitHub.
+- `git switch -c feature` – Creates and switches to a new branch.
+- `git add` – Stages changes for committing.
+- `git commit` – Saves changes to the local repository.
+- `git push -u origin feature` – Pushes the feature branch to GitHub.
+
+In this practical, a repository named `DevOpsPractical` is created, a README file is added, and a branch named `feature` is created and pushed to GitHub.
+
+### 4. Conclusion
+
+Successfully created a GitHub repository named DevOpsPractical, added a README file, created a branch named `feature`, and pushed the branch to GitHub. This practical helped me understand repository management, branching, and remote code sharing using GitHub.
+
+
+
+## Step 1: Create a repository on GitHub
+
+1. Open [GitHub](https://github.com/?utm_source=chatgpt.com) and log in to your account.
+2. Click the + icon in the top-right corner.
+3. Select New repository.
+4. Enter the repository name: `DevOpsPractical`.
+5. Choose Public or Private.
+6. Tick Add a README file.
+7. Click Create repository.
+
+## Step 2: Copy the repository URL
+
+1. Open your newly created repository.
+2. Click the green Code button.
+3. Copy the HTTPS URL. It should look like:
+
+```
+https://github.com/YOUR-USERNAME/DevOpsPractical.git
+```
+
+Replace `YOUR-USERNAME` with your actual GitHub username.
+
+## Step 3: Clone the repository
+
+Open PowerShell and execute:
+
+```
+git clone https://github.com/YOUR-USERNAME/DevOpsPractical.git
+cd DevOpsPractical
+```
+
+Use your actual repository URL in place of the example.
+
+## Step 4: Check the README file
+
+Run:
+
+```
+Get-Content README.md
+```
+
+The README file should exist because you selected the option to add it while creating the repository.
+
+You can also update it with practical details:
+
+```
+Set-Content README.md "# DevOpsPractical"
+Add-Content README.md ""
+Add-Content README.md "This repository contains my DevOps practical work."
+```
+
+Commit and push the README update:
+
+```
+git add README.md
+git commit -m "Update README"
+git push origin main
+```
+
+## Step 5: Create the feature branch
+
+Run:
+
+```
+git switch -c feature
+```
+
+This creates the `feature` branch and switches to it.
+
+Verify the branch:
+
+```
+git branch
+```
+
+Expected output:
+
+```
+* feature
+  main
+```
+
+## Step 6: Push the feature branch to GitHub
+
+Execute:
+
+```
+git push -u origin feature
+```
+
+If prompted, complete GitHub authentication in your browser.
+
+## Step 7: Verify the branch on GitHub
+
+1. Open your `DevOpsPractical` repository on GitHub.
+2. Click the branch dropdown, which usually displays `main`.
+3. Confirm that the `feature` branch appears in the list.
+
+You can also verify from PowerShell:
+
+```
+git branch -a
+```
+
+Expected output:
+
+```
+* feature
+  main
+  remotes/origin/feature
+  remotes/origin/main
+```
+
+## Expected result
+
+- GitHub repository `DevOpsPractical` created.
+- `README.md` added to the repository.
+- `feature` branch created locally.
+- `feature` branch pushed successfully to GitHub.
+- Remote branch verified on GitHub.
+
+Conclusion: Successfully created a GitHub repository named `DevOpsPractical`, added a README file, created a branch named `feature`, and pushed the branch to GitHub.
