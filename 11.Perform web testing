@@ -1,0 +1,153 @@
+## Experiment: Perform Web Testing Using Selenium
+
+### 1. Aim
+
+To perform web testing using Selenium by opening Google, searching for “DevOps”, and printing the page title.
+
+### 2. Objectives
+
+1. To understand the basics of web testing using Selenium.
+2. To learn browser automation using Python.
+3. To open Google automatically using Selenium WebDriver.
+4. To search for DevOps using the Google search box.
+5. To retrieve and print the webpage title.
+
+### 3. Theory
+
+Selenium is an open-source tool used to automate web browsers and test web applications. It supports programming languages such as Python, Java, and C#.
+
+Selenium WebDriver allows users to control a browser automatically. It can open websites, enter text, click buttons, and retrieve webpage information.
+
+In this practical, a Python script using Selenium WebDriver is created to open Google, search for DevOps, and print the page title.
+
+Important Selenium functions:
+
+- `webdriver.Chrome()` – Opens the Chrome browser.
+- `driver.get()` – Opens a website.
+- `find_element()` – Locates a web element.
+- `send_keys()` – Enters text into a web element.
+- `driver.title` – Retrieves the current webpage title.
+- `driver.quit()` – Closes the browser session.
+
+### 4. Conclusion
+
+Successfully performed web testing using Selenium and Python. The script opened Google, searched for DevOps, and printed the webpage title. This practical helped me understand browser automation and webpage interaction using Selenium WebDriver.
+
+
+
+# Practical: Perform Web Testing Using Selenium
+
+Aim: To write and execute a Selenium script to open Google, search for `DevOps`, and print the page title.
+
+## Step 1: Install Selenium
+
+1. Open PowerShell.
+2. Execute the following command:
+
+```
+pip install selenium
+```
+
+Wait until the installation is complete.
+
+## Step 2: Create a project folder
+
+Run these commands in PowerShell:
+
+```
+mkdir SeleniumPractical
+cd SeleniumPractical
+```
+
+## Step 3: Create a Python file
+
+Run:
+
+```
+notepad selenium_test.py
+```
+
+If Notepad asks whether to create a new file, click Yes.
+
+## Step 4: Write the Selenium program
+
+Copy and paste this complete code into Notepad:
+
+```
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+# Open Chrome browser
+driver = webdriver.Chrome()
+
+try:
+    # Open Google
+    driver.get("https://www.google.com")
+
+    # Locate the Google search box
+    search_box = WebDriverWait(driver, 20).until(
+        EC.element_to_be_clickable((By.NAME, "q"))
+    )
+
+    # Search for DevOps
+    search_box.send_keys("DevOps")
+    search_box.send_keys(Keys.ENTER)
+
+    # Wait for the search results page to load
+    WebDriverWait(driver, 20).until(
+        lambda d: "/search" in d.current_url
+    )
+
+    # Print the actual page title
+    print("Page Title:", driver.execute_script(
+        "return document.title"
+    ))
+
+finally:
+    # Close the browser
+    driver.quit()
+
+
+## Step 5: Save the file
+
+1. Press Ctrl + S.
+2. Close Notepad.
+3. Make sure the filename is `selenium_test.py`, not `selenium_test.py.txt`.
+
+## Step 6: Execute the program
+
+In the same PowerShell window, run:
+
+```
+python selenium_test.py
+```
+
+Chrome should open Google, search for DevOps, and then close automatically.
+
+## Step 7: Verify the output
+
+The output should look similar to:
+
+```
+Page Title: DevOps - Google Search
+```
+
+The exact title may vary depending on Google's response.
+
+If you receive a `TimeoutException`, Google may be displaying a consent page or another page that does not match the expected search results. Check what appears in Chrome before changing the code.
+
+## Step 8: Capture screenshots
+
+For your practical journal, capture:
+
+1. The Python code in `selenium_test.py`.
+2. The Google search results for DevOps.
+3. The PowerShell output showing `Page Title`.
+
+## Result
+
+Successfully automated Google using Selenium WebDriver, searched for DevOps, and printed the webpage title.
