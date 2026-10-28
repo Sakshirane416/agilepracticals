@@ -1,0 +1,171 @@
+## Experiment: Perform Git Branch and Merge
+
+### 1. Aim
+
+To create a Git repository, create a branch named `feature`, add and commit a file named `student.txt`, and merge the feature branch into the `main` branch.
+
+### 2. Objectives
+
+1. To understand the basic concepts of Git and version control.
+2. To learn how to create and initialize a Git repository.
+3. To create and switch between Git branches.
+4. To add and commit files to a branch.
+5. To merge changes from the feature branch into the main branch.
+
+### 3. Theory
+
+Git is a distributed version control system used to track changes in files and manage source code. It helps developers collaborate and maintain different versions of a project.
+
+A branch is a separate line of development that allows developers to work on new features without directly modifying the main branch.
+
+The `git commit` command saves changes to the repository, while the `git merge` command combines changes from one branch into another.
+
+In this practical, a Git repository is created, and a branch named `feature` is used to create and commit the `student.txt` file. The feature branch is then merged into the `main` branch.
+
+Important Git commands:
+
+- `git init` – Initializes a Git repository.
+- `git branch feature` – Creates a feature branch.
+- `git switch feature` – Switches to the feature branch.
+- `git add student.txt` – Stages the file.
+- `git commit -m "Add student.txt file"` – Commits the changes.
+- `git merge feature` – Merges the feature branch into the current branch.
+
+### 4. Conclusion
+
+Successfully created a Git repository, created a branch named `feature`, added and committed the `student.txt` file, and merged the feature branch into the `main` branch. This practical helped me understand Git branching, committing, and merging operations.
+
+
+
+
+## Step 1: Create a project folder
+
+Open PowerShell and execute:
+
+```
+mkdir GitBranchMerge
+cd GitBranchMerge
+```
+
+## Step 2: Initialize the Git repository
+
+```
+git init
+git branch -M main
+```
+
+This creates a new Git repository and names the main branch `main`.
+
+## Step 3: Create the feature branch
+
+```
+git branch feature
+git switch feature
+```
+
+To verify the current branch:
+
+```
+git branch
+```
+
+The `feature` branch should have an asterisk (`*`) beside it.
+
+## Step 4: Create the student.txt file
+
+Run:
+
+```
+Set-Content student.txt "Student Name: Sharvil Gharat"
+```
+
+Check the file contents:
+
+```
+Get-Content student.txt
+```
+
+Expected output:
+
+```
+Student Name: Sharvil Gharat
+```
+
+## Step 5: Add and commit the file
+
+Execute these commands:
+
+```
+git add student.txt
+git commit -m "Add student.txt file"
+```
+
+The file is now committed to the `feature` branch.
+
+If Git asks you to configure your identity, run these commands using your own details:
+
+```
+git config --global user.name "Your Name"
+git config --global user.email "your-email@example.com"
+```
+
+Then repeat the commit command.
+
+## Step 6: Switch to the main branch
+
+```
+git switch main
+```
+
+## Step 7: Merge the feature branch into main
+
+```
+git merge feature
+```
+
+Git will merge the changes from `feature` into `main`.
+
+## Step 8: Verify the merge
+
+Check the current branch:
+
+```
+git branch
+```
+
+Check the file:
+
+```
+Get-Content student.txt
+```
+
+Check the commit history:
+
+```
+git log --oneline --all --graph
+```
+
+Check the repository status:
+
+```
+git status
+```
+
+Expected status:
+
+```
+On branch main
+nothing to commit, working tree clean
+```
+
+The `student.txt` file should be present on `main`, confirming that the merge was successful.
+
+## Expected result
+
+- Git repository created successfully.
+- `feature` branch created.
+- `student.txt` file added and committed to `feature`.
+- `feature` branch merged into `main`.
+- Merge verified successfully.
+
+Conclusion: Successfully created a Git repository, created a feature branch, added and committed `student.txt`, and merged the feature branch into the main branch.
