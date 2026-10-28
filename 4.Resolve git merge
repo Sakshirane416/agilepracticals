@@ -1,0 +1,177 @@
+## Experiment: Resolve Git Merge Conflict
+
+### 1. Aim
+
+To create a Git repository, modify the same line of a file in two different branches, merge the branches, and resolve the merge conflict.
+
+### 2. Objectives
+
+1. To understand Git version control.
+2. To learn how to create and manage Git branches.
+3. To understand how merge conflicts occur.
+4. To learn how to resolve conflicts by editing the affected file.
+5. To commit the resolved changes successfully.
+
+### 3. Theory
+
+Git is a distributed version control system used to track changes in files and manage different versions of a project.
+
+A merge conflict occurs when two branches contain different changes to the same part of a file, and Git cannot automatically decide which change to keep.
+
+In this practical, a Git repository is created with a file named `student.txt`. The same line is modified differently in the `main` and `feature` branches. When the feature branch is merged into the main branch, Git reports a merge conflict.
+
+The conflict is resolved by opening the file, selecting the required content, removing the conflict markers, and committing the resolved changes.
+
+Important Git commands:
+
+- `git init` – Creates a Git repository.
+- `git switch -c feature` – Creates and switches to a new branch.
+- `git merge feature` – Merges the feature branch into the current branch.
+- `git add student.txt` – Stages the resolved file.
+- `git commit -m "Resolve merge conflict"` – Saves the resolved changes.
+
+### 4. Conclusion
+
+Successfully created a Git repository, modified the same line in two different branches, generated a merge conflict, and resolved it by selecting the required content. This practical helped me understand Git branching, merging, and conflict resolution.
+
+
+
+
+## Step 1: Create a Git repository
+
+Open PowerShell and execute:
+
+```
+mkdir GitConflictPractical
+cd GitConflictPractical
+git init
+git branch -M main
+```
+
+## Step 2: Create a file and make the first commit
+
+```
+Set-Content student.txt "Student Name: Sharvil"
+git add student.txt
+git commit -m "Initial commit"
+```
+
+If Git asks for your identity, configure your Git username and email before committing.
+
+## Step 3: Create the first branch
+
+Create a branch named `feature` and modify the file.
+
+```
+git switch -c feature
+Set-Content student.txt "Student Name: Sharvil Gharat"
+git add student.txt
+git commit -m "Update student name in feature branch"
+```
+
+## Step 4: Modify the same line in the main branch
+
+Switch to `main` and change the same line to a different value.
+
+```
+git switch main
+Set-Content student.txt "Student Name: Sharvil P. Gharat"
+git add student.txt
+git commit -m "Update student name in main branch"
+```
+
+Now both branches contain different changes to the same line.
+
+## Step 5: Merge the feature branch
+
+Execute:
+
+```
+git merge feature
+```
+
+Git should report a merge conflict because both branches modified the same line.
+
+## Step 6: Check the conflict
+
+Run:
+
+```
+Get-Content student.txt
+```
+
+The file will contain conflict markers similar to these:
+
+```
+<<<<<<< HEAD
+Student Name: Sharvil P. Gharat
+=======
+Student Name: Sharvil Gharat
+>>>>>>> feature
+```
+
+- `HEAD` represents the current `main` branch.
+- The `feature` section contains the changes from the feature branch.
+- The conflict occurs because both branches changed the same line.
+
+## Step 7: Resolve the conflict
+
+Choose the final version you want to keep. For this practical, keep the following line:
+
+```
+Set-Content student.txt "Student Name: Sharvil Gharat"
+```
+
+This replaces the conflict markers with the chosen content.
+
+## Step 8: Commit the resolved file
+
+Execute:
+
+```
+git add student.txt
+git commit -m "Resolve merge conflict"
+```
+
+## Step 9: Verify the result
+
+Check the file:
+
+```
+Get-Content student.txt
+```
+
+Expected output:
+
+```
+Student Name: Sharvil Gharat
+```
+
+Check the commit history:
+
+```
+git log --oneline --graph --all
+```
+
+Check the repository status:
+
+```
+git status
+```
+
+Expected output:
+
+```
+On branch main
+nothing to commit, working tree clean
+```
+
+## Expected result
+
+- Created a Git repository.
+- Modified the same line in two different branches.
+- Generated a merge conflict.
+- Resolved the conflict by selecting the required content.
+- Committed the resolved file successfully.
+
+Conclusion: Successfully created a Git repository, modified the same line in two branches, generated a merge conflict, and resolved it by selecting the required content and committing the changes.
