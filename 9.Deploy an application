@@ -1,0 +1,177 @@
+## Experiment: Deploy an Application in Kubernetes
+
+### 1. Aim
+
+To deploy an Nginx application using Kubernetes, create three replicas, and verify that all three pods are running successfully.
+
+### 2. Objectives
+
+1. To understand the basic concepts of Kubernetes.
+2. To learn how to deploy an application using Kubernetes.
+3. To create a Deployment with three replicas.
+4. To understand the role of pods and replicas in Kubernetes.
+5. To verify the status of pods and the deployment.
+
+### 3. Theory
+
+Kubernetes is an open-source container orchestration platform used to deploy, manage, and scale containerized applications.
+
+A Pod is the smallest deployable unit in Kubernetes. It contains one or more containers. A Deployment manages the creation and updating of pods and maintains the required number of replicas.
+
+In this practical, an Nginx application is deployed using a Kubernetes Deployment configuration file named `nginx-deployment.yaml`. The configuration specifies three replicas, ensuring that Kubernetes creates and maintains three Nginx pods.
+
+Important Kubernetes commands:
+
+- `kubectl get nodes` – Displays the available Kubernetes nodes.
+- `kubectl apply -f nginx-deployment.yaml` – Creates or updates the deployment.
+- `kubectl get pods` – Displays the status of pods.
+- `kubectl get deployments` – Displays deployment details and replica status.
+
+After deployment, the pods are checked to ensure that all three are running and ready.
+
+### 4. Conclusion
+
+Successfully deployed an Nginx application using Kubernetes with three replicas. Verified that all three pods were running and that the deployment had three available replicas. This practical helped me understand Kubernetes deployments, pods, replicas, and application management.
+
+
+
+
+## Step 1: Check Kubernetes
+
+1. Open Docker Desktop.
+2. Go to Settings → Kubernetes and ensure Kubernetes is enabled and running.
+3. Open PowerShell and execute:
+
+```
+kubectl get nodes
+```
+
+The node should show the status `Ready`.
+
+## Step 2: Create a project folder
+
+```
+mkdir KubernetesPractical
+cd KubernetesPractical
+```
+
+## Step 3: Create the deployment YAML file
+
+Run:
+
+```
+notepad nginx-deployment.yaml
+```
+
+Paste the following code:
+
+```
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+
+```
+
+Save the file using Ctrl + S and close Notepad.
+
+## Step 4: Deploy the application
+
+In PowerShell, run:
+
+```
+kubectl apply -f nginx-deployment.yaml
+```
+
+Expected output:
+
+```
+deployment.apps/nginx-deployment created
+```
+
+If the deployment already exists, the output may say `configured` or `unchanged`.
+
+## Step 5: Verify the pods
+
+Execute:
+
+```
+kubectl get pods
+```
+
+Wait until all three pods show `Running`. The pod names will be different on your computer.
+
+Example:
+
+```
+NAME                                READY   STATUS    RESTARTS   AGE
+nginx-deployment-xxxxxxxxxx-abc12   1/1     Running   0          1m
+nginx-deployment-xxxxxxxxxx-def34   1/1     Running   0          1m
+nginx-deployment-xxxxxxxxxx-ghi56   1/1     Running   0          1m
+```
+
+## Step 6: Verify the deployment
+
+Run:
+
+```
+kubectl get deployments
+```
+
+Expected output:
+
+```
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+nginx-deployment   3/3     3            3           1m
+```
+
+The `3/3` value confirms that all three replicas are ready.
+
+For additional verification, run:
+
+```
+kubectl get pods -o wide
+```
+
+This displays pod details, including their IP addresses and the nodes on which they are running.
+
+## Step 7: Access the Nginx application (optional)
+
+To open the Nginx webpage in your browser, execute:
+
+```
+kubectl port-forward deployment/nginx-deployment 8080:80
+```
+
+Keep PowerShell running and open:
+
+`http://localhost:8080`
+
+You should see the default Nginx welcome page. Press Ctrl + C in PowerShell to stop port forwarding.
+
+## Expected result
+
+- Kubernetes deployment created successfully.
+- Three Nginx replicas deployed.
+- All three pods reached `Running` status.
+- Deployment verified with `3/3` replicas ready.
+
+Conclusion: Successfully deployed an Nginx application using Kubernetes with three replicas. Verified that all three pods were running and that the deployment had three available replicas.
+
+Screenshots for your practical journal: Capture `kubectl get nodes`, `kubectl get pods`, and `kubectl get deployments` showing the successful results.
