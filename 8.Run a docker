@@ -1,0 +1,152 @@
+## Experiment: Run a Docker Compose Application
+
+### 1. Aim
+
+To create a Docker Compose file to run a web server using the Nginx image, start the service, and verify that the webpage is accessible.
+
+### 2. Objectives
+
+1. To understand the basic concepts of Docker Compose.
+2. To learn how to create a Docker Compose YAML file.
+3. To run an Nginx web server using Docker Compose.
+4. To understand port mapping and container management.
+5. To verify the running web application through a web browser.
+
+### 3. Theory
+
+Docker Compose is a tool used to define and manage applications using a YAML configuration file. It allows users to configure and run one or more containers using a single command.
+
+Nginx is a web server used to serve HTML pages and other web content. In this practical, Docker Compose is used to run an Nginx container and display a simple HTML webpage.
+
+The `compose.yaml` file specifies the Docker image, container name, port mapping, and volume configuration required to run the application.
+
+Important Docker Compose commands:
+
+- `docker compose up -d` – Starts the application in the background.
+- `docker compose ps` – Displays the status of the services.
+- `docker compose logs` – Displays service logs.
+- `docker compose down` – Stops and removes the containers and network created by Compose.
+
+The webpage is accessed through a browser using `http://localhost:8083` to verify that the Nginx server is running correctly.
+
+### 4. Conclusion
+
+Successfully created a Docker Compose configuration file and used it to run an Nginx web server. The webpage was accessed successfully through a web browser. This practical helped me understand Docker Compose configuration, container execution, port mapping, and web application deployment.
+
+
+
+
+## Step 1: Create a project folder
+
+Open PowerShell and execute:
+
+```
+mkdir DockerComposePractical
+cd DockerComposePractical
+```
+
+## Step 2: Create an HTML webpage
+
+Run:
+
+```
+notepad index.html
+```
+
+Paste the following HTML code:
+
+```
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Docker Compose</title>
+</head>
+<body>
+    <h1>Welcome to Docker Compose</h1>
+    <p>Nginx web server is running successfully.</p>
+</body>
+</html>
+
+```
+
+Save the file using Ctrl + S and close Notepad.
+
+## Step 3: Create the Docker Compose file
+
+Run:
+
+```
+notepad compose.yaml
+```
+
+Paste this code:
+
+```
+
+services:
+  web:
+    image: nginx:alpine
+    container_name: compose-web
+    ports:
+      - "8083:80"
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html:ro
+    restart: unless-stopped
+
+```
+
+Save the file as `compose.yaml` and close Notepad.
+
+This configuration uses the Nginx image, maps port `8083` on your computer to port `80` inside the container, and serves your HTML page.
+
+## Step 4: Start the application
+
+Ensure Docker Desktop is running. In the same PowerShell folder, execute:
+
+```
+docker compose up -d
+```
+
+This command creates and starts the Nginx service in the background.
+
+If you get an error saying that `compose-web` already exists from an earlier practical, use a different container name in the YAML file, such as `compose-web-practical`, then run the command again.
+
+## Step 5: Verify the running service
+
+Execute:
+
+```
+docker compose ps
+```
+
+The service should show a running status and a port mapping similar to `0.0.0.0:8083->80/tcp`.
+
+## Step 6: Open the webpage
+
+1. Open your web browser.
+2. Visit `http://localhost:8083`.
+3. Verify that the page displays:
+
+# Welcome to Docker Compose
+
+Nginx web server is running successfully.
+
+## Step 7: Stop the service
+
+After verifying the webpage, you can stop and remove the Compose container using:
+
+```
+docker compose down
+```
+
+This removes the container and network created by Compose, but keeps the Docker image and your project files.
+
+## Expected result
+
+- Created a `compose.yaml` file.
+- Started an Nginx web server using Docker Compose.
+- Verified that the container was running.
+- Accessed the webpage successfully at `http://localhost:8083`.
+
+Conclusion: Successfully created and executed a Docker Compose application using the Nginx image. The web server started successfully, and the webpage was accessible through the browser.
